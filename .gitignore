@@ -1,1 +1,10 @@
-DS.store
+
+# Mac Auto-Generated Files
+.DS_Store
+.DS_STORE/
+
+# Logs
+logs
+*.log
+# Dependency directories
+node_modules/

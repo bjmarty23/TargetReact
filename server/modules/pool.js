@@ -1,5 +1,6 @@
 const pg = require('pg');
 const url = require('url');
+let mongoose = require('mongoose');
 
 let config = {};
 
