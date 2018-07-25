@@ -1,31 +1,42 @@
 const express = require('express');
 const router = express.Router();
-const Model = require('../models/model');
+const Item = require('../models/items').default;
 
 //GET ROUTE
-module.exports = (app) => {
-    app.get('/api/model', (req, res, next) => {
-      model.find()
-        .exec()
-        .then((model) => res.json(model))
-        .catch((err) => next(err));
-    });
 
+router.get('/', function(req,res) {
+  res.json({messege: 'MONGO CONNECTION'})
+});
+
+router.get('/api/product', function(req, res) {
+  console.log('getting products from db');
+  Item.find({}).then(eachOne => {
+
+    res.json(eachOne);
+  })
+})
 // END GET Route
 
+//post ROUTE
+
+router.post('/api/product', function(req, res) {
+  Item.create({
+    product_id: req.body.product_id,
+    value: req.body.value
+  }).then(item =>{
+    res.json(item)
+  }).catch("errpr")
+});
+
 //UPDATE ROUTE
+router.put('/api/product/:product_id', (req,res) => {
 
-app.put('/api/model/:id/increment', (req, res, next) => {
-    model.findById(req.params.id)
-      .exec()
-      .then((counter) => {
-        model.count++;
-
-        model.save()
-          .then(() => res.json(model))
-          .catch((err) => next(err));
-      })
-      .catch((err) => next(err));
+Item.findOneAndUpdate({
+  product_id: req.body.product_id,
+  value: req.body.value
+  }).then(item =>{
+    res.json(item)
   });
-}
+});
+
 module.exports = router;
