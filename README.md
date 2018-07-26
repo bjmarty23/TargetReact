@@ -10,7 +10,9 @@ Clone and Fork this repository.
 
 Development Setup Instructions
 Run npm install
-npm start server/client
+npm init
+npm start server
+npm client
 
 
 Navigate to localhost:3000

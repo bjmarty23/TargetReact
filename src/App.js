@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import AppList from './components/AppList'
+import AppList from './components/AppList'
 // import PropTypes from 'prop-types';
 
 const mapStateToProps = state => ({
@@ -19,27 +19,22 @@ class App extends Component{
     }
 
     componentDidMount () {
-        fetch('https://redsky.target.com/v2/pdp/tcin/{13860428}?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics/api/?results')
-        .then(results=> {
-            return results.json();
-        }).then(data => {
-            console.log(data)
-        })
-        this.setState=({item: {
-            title: data.product.item.product_description.title
-        }
-        })
+        // fetch('https://redsky.target.com/v2/pdp/tcin/{13860428}?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics/api/?results')
+        // .then(results=> {
+        //     return results.json();
+        // }).then(data => {
+        //     console.log(data)
+        // })
+        // this.setState=({item: {
+        //     title: data.product.item.product_description.title
+        // }
+        // })
 
+        console.log('mounting')
+        this.props.dispatch({ type:'GET_ITEM'});
 
-
-
-
-
-        // console.log('mounting')
-        // this.props.dispatch({ type:'GET_ITEM'});
-
-        // console.log(this.props.state.getReducer);
-        // console.log(this.state)
+        console.log(this.props.state.getReducer);
+        console.log(this.state)
         
     }
     // getItemDetails() {
@@ -48,11 +43,11 @@ class App extends Component{
     //         name= {product.item.product_description.title}/>
     //     })
     // }
-    // // 
+    // 
     render(){
         // let items = this.state.getReducer.map((item) => {
-        //       return ( <li key={item.id}>
-        //                       item={item}</li> 
+        //       return ( <AppList key={item.id}
+        //                       item={item}/> 
         
         //       )
         //     });
