@@ -8,8 +8,8 @@ function* getData(action){
         console.log(getDataResponse.data)
         yield put({
             type: 'GET_ITEMDATA',
-            // payload: getDataResponse.data
-            payload: getDataResponse.data.product.available_to_promise_network.product_id,
+            payload: getDataResponse.data
+            // payload: getDataResponse.data.product.available_to_promise_network.product_id,
             // payload: getDataResponse.data.product.item.product_description.title
 
         })

@@ -11,6 +11,7 @@ let apiItem = 'https://redsky.target.com/v2/pdp/tcin/13860428?excludes=taxonomy,
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const isDev = process.env.NODE_ENV !== 'production';
 let port = process.env.PORT || 5000;
+const Item = require('./models/items')
 
 //---------mongodb setup
 let db = mongoose.connection; 
@@ -29,9 +30,17 @@ app.use(express.static('build'));
 
 //----------express routes
 app.use('/api/product', itemRouter);
-
+app.post('/api/product', function(req, res) {
+  Item.create({
+    product_id: req.body.product_id,
+    value: req.body.value,
+    title: req.body.title
+  }).then(item =>{
+    res.json(item)
+  })
+});
 
 //----------start server
 app.listen(port, function () {
-    console.log('listening on Port: ', port);
+    console.log('listening on Port:', port);
 });

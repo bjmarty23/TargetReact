@@ -22,11 +22,16 @@ router.get('/api/product', function(req, res) {
 router.post('/api/product', function(req, res) {
   Item.create({
     product_id: req.body.product_id,
-    value: req.body.value
+    value: req.body.value,
+    title: req.body.title,
   }).then(item =>{
     res.json(item)
-  }).catch("errpr")
+  })
+  .catch(err => {
+    res.status(400).send("Unable to save to database");
 });
+});
+
 
 //UPDATE ROUTE
 router.put('/api/product/:product_id', (req,res) => {
