@@ -28,7 +28,7 @@ router.post('/api/product', function(req, res) {
     res.json(item)
   })
   .catch(err => {
-    res.status(400).send("Unable to save to database");
+    res.status(400).send("failed");
 });
 });
 

@@ -6,11 +6,13 @@ const mapStateToProps = state => ({
     item: state.getReducer,
 });
 
-class AppList extends Component (){
+class AppList extends Component {
     constructor(){
         super();
         this.state = {
-            item : '',
+            price: '',
+            id:'',
+            title:'',
         }
     }
 
